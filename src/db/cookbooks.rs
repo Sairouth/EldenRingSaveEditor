@@ -78,6 +78,7 @@ pub mod books {
         // Frenzied's Cookbook
         FrenziedsCookbook1,
         FrenziedsCookbook2,
+		
     }
 
     pub static COOKBOKS: Lazy<Mutex<HashMap<Cookbook,(u32,&str)>>> = Lazy::new(|| {
@@ -156,6 +157,7 @@ pub mod books {
             // Frenzied's Cookbook
             (Cookbook::FrenziedsCookbook1,(68400,"Frenzied's Cookbook[1]")),
             (Cookbook::FrenziedsCookbook2,(68410,"Frenzied's Cookbook[2]")),
+		
         ]))
     });
 }

@@ -754,38 +754,6 @@ pub mod save {
                 }
             }
         }
-
-        // DLC
-        pub fn set_character_scadutree_lvl(&mut self, index: usize, scadutree_lvl: u32) {
-            match self {
-                SaveType::Unknown => panic!("Why are we here?"),
-                SaveType::PC(pc_save) => {
-                    pc_save.save_slots[index]
-                        .save_slot
-                        .player_game_data
-                        .scadutree_lvl = scadutree_lvl as u8;
-                }
-                SaveType::PlayStation(ps_save) => {
-                    ps_save.save_slots[index].player_game_data.scadutree_lvl = scadutree_lvl as u8;
-                }
-            }
-        }
-
-        pub fn set_character_spirit_ash_lvl(&mut self, index: usize, spirit_ash_lvl: u32) {
-            match self {
-                SaveType::Unknown => panic!("Why are we here?"),
-                SaveType::PC(pc_save) => {
-                    pc_save.save_slots[index]
-                        .save_slot
-                        .player_game_data
-                        .spirit_ash_lvl = spirit_ash_lvl as u8;
-                }
-                SaveType::PlayStation(ps_save) => {
-                    ps_save.save_slots[index].player_game_data.spirit_ash_lvl =
-                        spirit_ash_lvl as u8;
-                }
-            }
-        }
     }
 
     pub struct Save {
@@ -857,12 +825,7 @@ pub mod save {
 
         // Check if it's a PS Save Wizard save file
         pub fn is_ps_save_wizard(br: &mut BinaryReader) -> bool {
-            br.jmp(0x1960070);
-            let regulation = br.read_bytes(0x240010).expect("");
-            let digest = md5::compute(regulation);
-            let is_ps_save_wizard = digest == md5::Digest(REGULATION_MD5_CHECKSUM);
-            br.jmp(0);
-            is_ps_save_wizard
+            true
         }
     }
     
