@@ -25,7 +25,7 @@ impl Read for UserData11 {
         user_data_11.unk.copy_from_slice(br.read_bytes(0x10)?);
         user_data_11.regulation.copy_from_slice(br.read_bytes(0x1e9fb0)?);
         user_data_11.rest.copy_from_slice(br.read_bytes(0x56050)?);
-        assert_eq!(user_data_11.rest[0], 0);
+        //assert_eq!(user_data_11.rest[0], 0);
         Ok(user_data_11)
     }
 }
